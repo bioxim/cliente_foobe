@@ -19,6 +19,11 @@ mongoose.connect(process.env.DB_URL, {
 // crear el servidor
 const app = express();
 
+// Carpeta pública
+app.use(express.static('uploads/tradeshows'));
+app.use(express.static('uploads/docs'));
+app.use(express.static('uploads/profiles'));
+
 // habilitar body-parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -43,11 +48,6 @@ app.use(cors(corsOptions));
 
 // Rutas de la App
 app.use('/', routes());
-
-// Carpeta pública
-app.use(express.static('uploads/tradeshows'));
-app.use(express.static('uploads/docs'));
-app.use(express.static('uploads/profiles'));
 
 const host = process.env.HOST || '0.0.0.0';
 const port = process.env.PORT || 5000;
