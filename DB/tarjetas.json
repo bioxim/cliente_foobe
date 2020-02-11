@@ -1,0 +1,6 @@
+{"_id":{"$oid":"5e306e79f792c632b0a765e3"},"nombre":"Tarjeta de Xime","empresa":"foobe.com.ar","email":"ximecamino@gmail.com","telefono":"01161175832","url":"https://foobe.com.ar","__v":0}
+{"_id":{"$oid":"5e306e89f792c632b0a765e4"},"nombre":"Tarjeta 2","empresa":"foobe.com.ar","email":"ximecamino@gmail.com","telefono":"01161175832","url":"https://foobe.com.ar","__v":0}
+{"_id":{"$oid":"5e3412e159084011e06afd9a"},"nombre":"Xime","empresa":"foobe","email":"ximecamino@gmail.com","telefono":"01161175832","url":"https://foobe.com.ar","__v":0}
+{"_id":{"$oid":"5e3450b53f8b1e3c88b517d7"},"nombre":"Fofura Camino","empresa":"Fofu & Co.","email":"fofura@fofura.com","telefono":"+5411 6117 5832","url":"fofurathebest.com.ar","__v":0}
+{"_id":{"$oid":"5e3d50abeddfe52bdc36b99b"},"nombre":"Señora","empresa":"Garbarino","email":"s.kleinlercher@cmi.at","telefono":"01161175832","url":"https://www.youtube.com/watch?v=","__v":0}
+{"_id":{"$oid":"5e3eb085eaeb2325747d5808"},"nombre":"Elvira Gonzalez","empresa":"Platitos SA","email":"elvira@platitos.com","telefono":"53453905 908 8 0","url":"https://nodejs.mx","__v":0}

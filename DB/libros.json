@@ -1,0 +1,2 @@
+{"_id":{"$oid":"5e41c0b90352732cd031448f"},"feria":{"$oid":"5e30c35b86f7d8070474c400"},"libro":[{"_id":{"$oid":"5e3450b53f8b1e3c88b517d7"},"tarjeta":{"$oid":"5e3450b53f8b1e3c88b517d7"}}],"__v":0}
+{"_id":{"$oid":"5e41c4c33a4e6e04143ccb7b"},"feria":{"$oid":"5e41c4963a4e6e04143ccb7a"},"libro":[{"_id":{"$oid":"5e306e79f792c632b0a765e3"},"tarjeta":{"$oid":"5e306e79f792c632b0a765e3"}},{"_id":{"$oid":"5e306e89f792c632b0a765e4"},"tarjeta":{"$oid":"5e306e89f792c632b0a765e4"}},{"_id":{"$oid":"5e306e79f792c632b0a765e3"},"tarjeta":{"$oid":"5e306e79f792c632b0a765e3"}}],"__v":0}

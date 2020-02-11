@@ -1,0 +1,4 @@
+{"_id":{"$oid":"5e39670332e84b2748e2369f"},"nombre":"Cliente","password":"$2b$12$dVqvcb61whVJa8eIE5qMqe4Qf.apfRmN4yCDjgsm8bj7O7dO27I/W","email":"cliente@cliente.com","__v":0}
+{"_id":{"$oid":"5e3bf8d9f98da6319082807c"},"nombre":"Fofura Camino","email":"fofu@fofu.com","password":"$2b$12$INQdy4FwyLBkQUp1d38.LuJ9mbE0ZF/Hjscxm/Db9MV2lAAHELPfm","__v":0}
+{"_id":{"$oid":"5e3bf94af98da6319082807d"},"nombre":"Pepi Camino","email":"pepi@pepi.com","password":"$2b$12$sK4TwRVUtL5mDjnKj/aQN.OU6uhzPU6iLiwW/nuUhkG19nZN1Vl3W","__v":0}
+{"_id":{"$oid":"5e3bfa20f98da6319082807e"},"nombre":"Lolita Camino","email":"loli@loli.com","password":"$2b$12$mKJhx165E1lsvTF4tX/hdextTQ2ynqssxDCrCQx1QkO6BGH0pHhX6","__v":0}

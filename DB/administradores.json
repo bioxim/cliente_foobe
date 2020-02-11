@@ -1,0 +1,3 @@
+{"_id":{"$oid":"5e3966bd32e84b2748e2369e"},"nombre":"Administradora","password":"$2b$12$9cxb3okBQqFTfbJyRFzdI.2bCRlHIlhVnGkHp78OMzcKhsb.Ukb82","email":"admin@admin.com","__v":0}
+{"_id":{"$oid":"5e3b1ad4a464c22b4453997e"},"nombre":"Gonzalo Gusmán","email":"correo@correo.com","password":"$2b$12$/rBMfFONtrRi5H2xhxF.g.OrVi2UMGkSN/1Nj/Vr.6IbkedD4Lf/S","__v":0}
+{"_id":{"$oid":"5e3b1c56a464c22b44539981"},"nombre":"walda","email":"wde@wdexpo.com","password":"$2b$12$qjW2ZrmkU2U17RvBamQq9.VEJatZPkGdZkF2kdZ9cu20u9nXoSaeW","__v":0}

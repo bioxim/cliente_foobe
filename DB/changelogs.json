@@ -1,0 +1,6 @@
+{"_id":{"$oid":"5e2ecf2f75b6223a88a67e22"},"fecha":{"$date":"2020-01-29T00:00:00Z"},"changelog":"Suspendisse non eros sit amet ligula maximus pharetra. Nullam sit amet odio a mauris viverra fermentum a ac erat.","__v":0}
+{"_id":{"$oid":"5e2ecf3f75b6223a88a67e23"},"fecha":{"$date":"2020-02-04T00:00:00Z"},"changelog":"Praesent rhoncus commodo justo a molestie. Morbi efficitur dolor id diam dapibus, eget scelerisque ante hendrerit.","__v":0}
+{"_id":{"$oid":"5e398ea101b9252a5896e491"},"fecha":{"$date":"2020-02-05T00:00:00Z"},"changelog":"Nuevo Changelog día de hoy","__v":0}
+{"_id":{"$oid":"5e3aa83802c4aa32c405f912"},"fecha":{"$date":"2020-02-06T00:00:00Z"},"changelog":"Prueba de la autolimitación desde mongoose","__v":0}
+{"_id":{"$oid":"5e3aa87202c4aa32c405f913"},"fecha":{"$date":"2020-02-20T00:00:00Z"},"changelog":"changelog hoy","__v":0}
+{"_id":{"$oid":"5e3ac3506b8fd333546d77f6"},"fecha":{"$date":"2020-02-05T00:00:00Z"},"changelog":"by injected humour, or randomised words.","__v":0}
