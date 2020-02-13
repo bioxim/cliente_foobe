@@ -23,6 +23,10 @@ const tarjetasSchema = new Schema({
 		type: String,
 		lowercase: true,
 		trim: true
+	},
+	pais: {
+		type: String,
+		trim: true
 	}
 });
 
