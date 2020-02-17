@@ -11,6 +11,12 @@ const librosSchema = new Schema({
 			type: Schema.ObjectId,
 			ref: 'Tarjetas'
 		}
+	}],
+	librof: [{
+		libropdf: {
+			type: Schema.ObjectId,
+			ref: 'Librosf'
+		}
 	}]
 });
 

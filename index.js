@@ -23,13 +23,14 @@ const app = express();
 app.use(express.static('uploads/tradeshows'));
 app.use(express.static('uploads/docs'));
 app.use(express.static('uploads/profiles'));
+app.use(express.static('uploads/pdfs'));
 
 // habilitar body-parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Definir un dominio(s) para recibir las peticiones
-const whitelist = [process.env.FRONTEND_URL, process.env.BACKEND_URL];
+const whitelist = [process.env.FRONTEND_URL, process.env.BACKEND_URL, process.env.CLIENTE];
 const corsOptions = {
 	origin: (origin, callback) => {
 		//console.log(origin);

@@ -14,10 +14,16 @@ exports.nuevoLibro = async (req, res, next) => {
 // Muestra todos los pedidos
 exports.mostrarLibros = async (req, res, next) => {
 	try {
-		const libros = await Libros.find({}).populate('feria').populate({
-			path: 'libro.tarjeta',
-			model: 'Tarjetas'
-		});
+		const libros = await Libros.find({})
+			.populate('feria')
+			.populate({
+				path: 'libro.tarjeta',
+				model: 'Tarjetas'
+			})
+			.populate({
+				path: 'librof.libropdf',
+				model: 'Librosf'
+			});
 		res.json(libros);
 	} catch(error) {
 		console.log(error);
@@ -27,9 +33,15 @@ exports.mostrarLibros = async (req, res, next) => {
 
 // Muestra un pedido por su ID
 exports.mostrarLibro = async (req, res, next) => {
-	const libro = await Libros.findById(req.params.idLibro).populate('feria').populate({
+	const libro = await Libros.findById(req.params.idLibro)
+		.populate('feria')
+		.populate({
 			path: 'libro.tarjeta',
 			model: 'Tarjetas'
+		})
+		.populate({
+			path: 'librof.libropdf',
+			model: 'Librosf'
 		});
 
 	if(!libro) {
@@ -37,8 +49,8 @@ exports.mostrarLibro = async (req, res, next) => {
 		return next();
 	}
 
-	// Mostrar el pedido
-	res.json(pedido);
+	// Mostrar el libro
+	res.json(libro);
 }
 // Actualizar el pedido vía ID
 exports.actualizarLibro = async (req, res, next) =>{
@@ -50,6 +62,10 @@ exports.actualizarLibro = async (req, res, next) =>{
 		.populate({
 			path: 'libro.tarjeta',
 			model: 'Tarjetas'
+		})
+		.populate({
+			path: 'librof.libropdf',
+			model: 'Librosf'
 		});
 
 		res.json(libro);

@@ -11,6 +11,7 @@ const documentationController = require('../controllers/documentationController'
 const feriaController = require('../controllers/feriaController');
 const cardController = require('../controllers/cardController');
 const librosController = require('../controllers/librosController');
+const librosFController = require('../controllers/librosFController');
 
 /** ZONA CLIENTES **/
 const usuariosController = require('../controllers/usuariosController');
@@ -216,13 +217,37 @@ module.exports = function() {
 	);
 
 	// Actualizar pedidos
-	router.put('/books/:idLibro', 
+	router.put('/books/:idLibro',
 		librosController.actualizarLibro
 	);
 
 	// Eliminar pedido
 	router.delete('/books/:idLibro', 
 		librosController.eliminarLibro
+	);
+	// Busqueda de tarjetas
+	router.post('/librosf/busqueda/:query',
+		librosFController.buscarLibrosf
+	);
+
+	/* CRUD LIBROS FíSICOS */
+	// Agregar
+	router.post('/librosfisicos',
+		librosFController.subirPdf,
+		librosFController.nuevoLibroF
+	);
+	// Mostrar todos
+	router.get('/librosfisicos', librosFController.mostrarLibrosF);
+	// Mostrar uno por id
+	router.get('/librosfisicos/:idLibroF', librosFController.mostrarLibroF);
+	// Editar uno por id
+	router.put('/librosfisicos/:idLibroF',
+		librosFController.subirPdf,
+		librosFController.actualizarLibroF
+	);
+	// Eliminar uno por id
+	router.delete('/librosfisicos/:idLibroF',
+		librosFController.eliminarLibroF
 	);
 
 
