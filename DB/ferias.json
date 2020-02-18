@@ -1,2 +1,0 @@
-{"_id":{"$oid":"5e30c35b86f7d8070474c400"},"nombre":"Sial París 2020","fechainicial":{"$date":"2020-03-19T00:00:00Z"},"fechafin":{"$date":"2020-03-21T00:00:00Z"},"tipo":"Internacional","categoria":"Alimentos","imagen":"IDkxUMH2.png","__v":0}
-{"_id":{"$oid":"5e41c4963a4e6e04143ccb7a"},"nombre":"Pilar Fest","fechainicial":{"$date":"2020-02-27T00:00:00Z"},"fechafin":{"$date":"2020-02-29T00:00:00Z"},"tipo":"Nacional","categoria":"Bebidas","imagen":"ppMbiGps.jpeg","__v":0}
