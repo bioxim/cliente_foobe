@@ -68,7 +68,7 @@ exports.nuevoLibroF = async (req, res, next) => {
 // Muestra todas las ferias
 exports.mostrarLibrosF = async (req, res, next) => {
     try {
-        const librosf = await Librosf.find({});
+        const librosf = await Librosf.find({}).sort({'fecha': 'desc'});
         res.json(librosf);
     } catch(error) {
         console.log(error);
@@ -157,6 +157,20 @@ exports.buscarLibrosf = async (req, res, next) => {
         // obtener el query
         const { query } = req.params;
         const librof = await Librosf.find({ nombre: new RegExp(query, 'i') });
+        res.json(librof);
+    } catch(error) {
+        console.log(error);
+        next();
+    }
+}
+
+// VISTAS PARA EL FRONTEND
+// En el Slider del Home
+exports.ultimosLibrosF = async (req, res, next) => {
+    try {
+        // obtener el query
+        const { query } = req.params;
+        const librof = await Librosf.find({}).sort({'fecha': 'desc'}).limit(5);
         res.json(librof);
     } catch(error) {
         console.log(error);

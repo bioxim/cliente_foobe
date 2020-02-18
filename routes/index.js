@@ -265,7 +265,11 @@ module.exports = function() {
 		auth,
 		clientesVistasController.mostrarBooks
 	);
-	
+	/* VISTAS LIBROS DE PDFs */
+	router.get('/list',
+		auth,
+		librosFController.mostrarLibrosF
+	);
 
 	/********* CRUD PERFILES USUARIOS *********/
 
