@@ -262,7 +262,6 @@ module.exports = function() {
 		clientesVistasController.mostrarTarjetas
 	);
 	router.get('/books-cards',
-		auth,
 		clientesVistasController.mostrarBooks
 	);
 	/* VISTAS LIBROS DE PDFs */
