@@ -21,6 +21,7 @@ mongoose.connect(process.env.DB_URL, {
 const app = express();
 
 // Carpeta pública
+app.use(express.static('uploads'));
 app.use(express.static('uploads/tradeshows'));
 app.use(express.static('uploads/docs'));
 app.use(express.static('uploads/profiles'));
