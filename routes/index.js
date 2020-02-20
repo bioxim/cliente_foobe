@@ -7,6 +7,7 @@ const administradoresController = require('../controllers/administradoresControl
 const contenidoController = require('../controllers/contenidoController');
 const changelogController = require('../controllers/changelogController');
 const documentationController = require('../controllers/documentationController');
+const productoresController = require('../controllers/productoresController');
 
 const feriaController = require('../controllers/feriaController');
 const cardController = require('../controllers/cardController');
@@ -250,6 +251,27 @@ module.exports = function() {
 		librosFController.eliminarLibroF
 	);
 
+	/* CRUD PRODUCTORES */
+	// Agregar
+	router.post('/productores', 
+		productoresController.nuevoProductor
+	);
+	// Mostrar todos
+	router.get('/productores', 
+		productoresController.mostrarProductores
+	);
+	// Mostrar uno por id
+	router.get('/productores/:idProductor', 
+		productoresController.mostrarProductor
+	);
+	// Editar uno por id
+	router.put('/productores/:idProductor', 
+		productoresController.actualizarProductor
+	);
+	// Eliminar uno por id
+	router.delete('/productores/:idProductor',
+		productoresController.eliminarProductor
+	);
 
 	///////////////////////////////////////
 	/*********** ZONA CLIENTES ***********/
@@ -258,7 +280,6 @@ module.exports = function() {
 	router.post('/login', usuariosController.autenticarUsuario);
 	/* VISTAS TARJETAs Y LIBROS DE CLIENTES */
 	router.get('/all-cards',
-		auth,
 		clientesVistasController.mostrarTarjetas
 	);
 	router.get('/books-cards',
@@ -266,7 +287,6 @@ module.exports = function() {
 	);
 	/* VISTAS LIBROS DE PDFs */
 	router.get('/list',
-		auth,
 		librosFController.mostrarLibrosF
 	);
 

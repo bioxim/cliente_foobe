@@ -2,6 +2,7 @@ const express = require('express');
 const routes = require('./routes');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
 require ('dotenv').config({ path: 'variables.env'});
 
 // Cors permite que un cliente se conecte a otro servidor para el intercambio de recursos
@@ -24,6 +25,9 @@ app.use(express.static('uploads/tradeshows'));
 app.use(express.static('uploads/docs'));
 app.use(express.static('uploads/profiles'));
 app.use(express.static('uploads/pdfs'));
+
+// validación de campos
+app.use(expressValidator());
 
 // habilitar body-parser
 app.use(bodyParser.json());
