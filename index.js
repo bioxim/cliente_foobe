@@ -8,12 +8,6 @@ require ('dotenv').config({ path: 'variables.env'});
 // Cors permite que un cliente se conecte a otro servidor para el intercambio de recursos
 const cors = require('cors');
 
-// Carpeta pública
-app.use(express.static('uploads/tradeshows'));
-app.use(express.static('uploads/docs'));
-app.use(express.static('uploads/profiles'));
-app.use(express.static('uploads/pdfs'));
-
 // conectar mongo
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DB_URL, {
@@ -22,6 +16,12 @@ mongoose.connect(process.env.DB_URL, {
 	useCreateIndex: true,
 	useFindAndModify: false
 });
+
+// Carpeta pública
+app.use(express.static('uploads/tradeshows'));
+app.use(express.static('uploads/docs'));
+app.use(express.static('uploads/profiles'));
+app.use(express.static('uploads/pdfs'));
 
 // crear el servidor
 const app = express();
