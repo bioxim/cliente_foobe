@@ -17,14 +17,14 @@ mongoose.connect(process.env.DB_URL, {
 	useFindAndModify: false
 });
 
+// crear el servidor
+const app = express();
+
 // Carpeta pública
 app.use(express.static('uploads/tradeshows'));
 app.use(express.static('uploads/docs'));
 app.use(express.static('uploads/profiles'));
 app.use(express.static('uploads/pdfs'));
-
-// crear el servidor
-const app = express();
 
 // validación de campos
 app.use(expressValidator());
