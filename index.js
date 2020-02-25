@@ -52,12 +52,12 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Rutas de la App
-app.use('/', routes());
+app.use('/api/', routes());
 
 const host =  '167.172.151.137' || process.env.HOST;
 const port = 5000;
 
-app.get('/', (req, res) => res.send('Esta es la api de foobe.com.ar'));
+app.get('/api/', (req, res) => res.send('Esta es la api de foobe.com.ar'));
 
 // iniciar app
 app.listen(port, host, () => {
