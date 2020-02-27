@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Definir un dominio(s) para recibir las peticiones
-const whitelist = [process.env.FRONTEND_URL,process.env.FRONTEND,process.env.BACKEND_URL,'http://167.172.151.137'];
+const whitelist = [process.env.FRONTEND_URL,process.env.FRONTEND,process.env.BACKEND_URL];
 const corsOptions = {
 	origin: (origin, callback) => {
 		//console.log(origin);
@@ -54,7 +54,7 @@ app.use(cors(corsOptions));
 // Rutas de la App
 app.use('/', routes());
 
-const host =  '167.172.151.137' || process.env.HOST;
+const host = process.env.HOST || '0.0.0.0';
 const port = 5000;
 
 app.get('/', (req, res) => res.send('Esta es la api de foobe.com.ar'));
