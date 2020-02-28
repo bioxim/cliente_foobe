@@ -10,7 +10,7 @@ const cors = require('cors');
 
 // conectar mongo
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://167.172.151.137/foobebd', {
+mongoose.connect(process.env.DB_URL, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 	useCreateIndex: true,
@@ -37,14 +37,15 @@ app.use(bodyParser.urlencoded({extended: true}));
 const whitelist = [process.env.FRONTEND_URL, process.env.BACKEND_URL, process.env.CLIENTE, process.env.FRONTEND];
 const corsOptions = {
 	origin: (origin, callback) => {
-		console.log(origin);
+		//console.log(origin);
 		// Revisar si la petición viene de un servidor que está en la lista whitelist
-		if (whitelist.indexOf(origin) !== -1  || !origin) {
-	      callback(null, true)
-	    } else {
-	      callback(new Error('Not allowed by CORS'))
-	    	}
+		const existe = whitelist.some( dominio => dominio === origin );
+		if(existe) {
+			callback(null, true);
+		} else {
+			callback(new Error('No permitido por CORS'));
 		}
+	}
 }
 
 // Habilitar cors
@@ -53,7 +54,7 @@ app.use(cors(corsOptions));
 // Rutas de la App
 app.use('/', routes());
 
-const host = process.env.HOST || '167.172.151.137';
+const host = '167.172.151.137';
 const port = process.env.PORT || 5000;
 
 app.get('/', (req, res) => res.send('Esta es la api de foobe.com.ar'));
