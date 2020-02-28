@@ -10,7 +10,7 @@ const cors = require('cors');
 
 // conectar mongo
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DB_URL, {
+mongoose.connect('mongodb://167.172.151.137/foobebd', {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 	useCreateIndex: true,
@@ -54,7 +54,7 @@ app.use(cors(corsOptions));
 app.use('/', routes());
 
 const host = process.env.HOST || '167.172.151.137';
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 app.get('/', (req, res) => res.send('Esta es la api de foobe.com.ar'));
 
