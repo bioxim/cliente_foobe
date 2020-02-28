@@ -33,26 +33,18 @@ app.use(expressValidator());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", req.header('origin'));
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Credentials","true");
-  next();
-}); 
-
 // Definir un dominio(s) para recibir las peticiones
 const whitelist = [process.env.FRONTEND_URL, process.env.BACKEND_URL, process.env.CLIENTE, process.env.FRONTEND];
 const corsOptions = {
 	origin: (origin, callback) => {
 		console.log(origin);
 		// Revisar si la petición viene de un servidor que está en la lista whitelist
-		const existe = whitelist.some( dominio => dominio === origin );
-		if(existe || existe === undefined) {
-			callback(null, true);
-		} else {
-			callback(new Error('No permitido por CORS'));
+		if (whitelist.indexOf(origin) !== -1  || !origin) {
+	      callback(null, true)
+	    } else {
+	      callback(new Error('Not allowed by CORS'))
+	    	}
 		}
-	}
 }
 
 // Habilitar cors
