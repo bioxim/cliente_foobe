@@ -34,13 +34,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Definir un dominio(s) para recibir las peticiones
-const whitelist = [process.env.FRONTEND_URL, process.env.BACKEND_URL, process.env.CLIENTE];
+const whitelist = [process.env.FRONTEND_URL, process.env.BACKEND_URL, process.env.CLIENTE, process.env.FRONTEND];
 const corsOptions = {
 	origin: (origin, callback) => {
 		console.log(origin);
 		// Revisar si la petición viene de un servidor que está en la lista whitelist
 		const existe = whitelist.some( dominio => dominio === origin );
-		if(existe) {
+		if(existe || existe === undefined) {
 			callback(null, true);
 		} else {
 			callback(new Error('No permitido por CORS'));
