@@ -52,7 +52,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Rutas de la App
-app.use('/', routes());
+app.use('/*', routes());
 
 const host = '167.172.151.137';
 const port = 5000;
