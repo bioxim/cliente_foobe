@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Definir un dominio(s) para recibir las peticiones
-const whitelist = [process.env.FRONTEND_URL, process.env.BACKEND_URL, process.env.CLIENTE, process.env.FRONTEND, process.env.BACKEND];
+const whitelist = [process.env.FRONTEND_URL, process.env.BACKEND_URL, process.env.CLIENTE, process.env.ADMINISTRADOR, process.env.FRONTEND, process.env.BACKEND, 'https://admin.foobe.com.ar'];
 const corsOptions = {
 	origin: (origin, callback) => {
 		//console.log(origin);
