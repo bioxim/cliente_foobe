@@ -11,7 +11,7 @@ exports.subirImagen = (req, res, next) => {
 		if(error) {
 			if(error instanceof multer.MulterError) {
 				if(error.code === 'LIMIT_FILE_SIZE') {
-					res.json( { mensaje: 'El archivo es muy grande: Máximo 100kb' } );
+					res.json( { mensaje: 'This file is too big: Max size 1Mb' } );
 				} else {
 					res.json({ mensaje: 'Error no LIMIT_FILE_SIZE' });
 				}
@@ -27,7 +27,7 @@ exports.subirImagen = (req, res, next) => {
 }
 // Opciones de Multer
 const configuracionMulter = {
-	limits: { fileSize : 100000 },
+	limits: { fileSize : 1000000 },
 	storage: fileStorage = multer.diskStorage({
         destination : (req, file, cb) => {
             cb(null, __dirname+'../../uploads/profiles');
@@ -42,7 +42,7 @@ const configuracionMulter = {
             // el callback se ejecuta como true o false : true cuando la imagen se acepta
             cb(null, true);
         } else {
-            cb(new Error('Formato No Válido'));
+            cb(new Error('Format invalid'));
         }
     }
 }
@@ -58,7 +58,7 @@ exports.nuevoPerfil = async (req, res, next) => {
             perfil.imagen = req.file.filename
         }
 		await perfil.save();
-		res.json({ mensaje: 'Se agregó un nuevo perfil' });
+		res.json({ mensaje: 'Profile added' });
 	} catch(error) {
 		console.log(error);
 		next();
@@ -68,8 +68,8 @@ exports.nuevoPerfil = async (req, res, next) => {
 // Muestra todos los perfiles
 exports.mostrarPerfiles = async (req, res, next) => {
     try {
-        const perfil = await Perfiles.find({});
-        res.json(perfil);
+        const perfiles = await Perfiles.find({});
+        res.json(perfiles);
     } catch(error) {
         console.log(error);
         next();
@@ -81,7 +81,7 @@ exports.mostrarPerfil = async (req, res, next) => {
     const perfil = await Perfiles.findById(req.params.idPerfil);
 
     if(!perfil) {
-        res.json({ mensaje: 'Ese Perfil no existe' });
+        res.json({ mensaje: 'This profile does not exist' });
         return next();
     }
 
@@ -147,7 +147,7 @@ exports.eliminarPerfil = async (req, res, next) => {
             })
         }
         await Perfiles.findByIdAndDelete({ _id: req.params.idPerfil });
-        res.json({ mensaje: 'El perfil se ha eliminado '});
+        res.json({ mensaje: 'This profile has been deleted'});
     } catch(error) {
         console.log(error);
         next();

@@ -18,7 +18,7 @@ const librosFController = require('../controllers/librosFController');
 const usuariosController = require('../controllers/usuariosController');
 const clientesVistasController = require('../controllers/clientesVistasController');
 
-
+const objetosController = require('../controllers/objetosController');
 const perfilController = require('../controllers/perfilController');
 const mensajeController = require('../controllers/mensajeController');
 
@@ -290,7 +290,7 @@ module.exports = function() {
 		librosFController.mostrarLibrosF
 	);
 
-	/********* CRUD PERFILES USUARIOS *********/
+	/* CRUD PERFILES USUARIOS */
 
 	// Agregar
 	router.post('/profile', 
@@ -315,7 +315,7 @@ module.exports = function() {
 		perfilController.eliminarPerfil
 	);
 
-	/********* MENSAJES ENTRE USUARIOS *********/
+	/* CRUD MENSAJES ENTRE USUARIOS */
 
 	// Agregar
 	router.post('/messages', 
@@ -338,7 +338,28 @@ module.exports = function() {
 		mensajeController.eliminarMensaje
 	);	
 
+	/* MANEJO DE LOS OBJETOS-USUARIO REGISTRADO */
 	
+	// Agregar
+	router.post('/activity', 
+		objetosController.nuevoObjeto
+	);
+	// Mostrar todos
+	router.get('/activity', 
+		objetosController.mostrarObjetos
+	);
+	// Mostrar uno por id
+	router.get('/activity/:idObjeto', 
+		objetosController.mostrarObjeto
+	);
+	// Editar uno por id
+	router.put('/activity/:idObjeto', 
+		objetosController.actualizarObjeto
+	);
+	// Eliminar uno por id
+	router.delete('/activity/:idObjeto',
+		objetosController.eliminarObjeto
+	);	
 
 	return router;
 }

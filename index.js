@@ -54,7 +54,7 @@ app.use(cors(corsOptions));
 // Rutas de la App
 app.use('/', routes());
 
-const host = '167.172.151.137';
+const host = process.env.HOST || '104.248.48.153';
 const port = 5000;
 
 app.get('/', (req, res) => res.send('Esta es la api de foobe.com.ar'));

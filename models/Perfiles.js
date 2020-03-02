@@ -23,7 +23,10 @@ const perfilesSchema = new Schema({
 		type: String,
 		trim: true
 	},
-	nacimiento: Date,
+	nacimiento:  {
+		type: Date,
+		default: Date.now
+	},
 	profile: String,
 	direccion: {
 		type: String,
@@ -40,6 +43,30 @@ const perfilesSchema = new Schema({
 	pais: {
 		type: String,
 		trim: true
+	},
+	facebook: {
+		type: String,
+		trim: true
+	},
+	linkedin: {
+		type: String,
+		trim: true
+	},
+	twitter: {
+		type: String,
+		trim: true
+	},
+	instagram: {
+		type: String,
+		trim: true
+	},
+	youtube: {
+		type: String,
+		trim: true
+	},
+	sliderhome: {
+		type: Number,
+		default: 0
 	}
 });
 
