@@ -54,12 +54,12 @@ app.use(cors(corsOptions));
 // Rutas de la App
 app.use('/', routes());
 
-const host = localhost;
-const port = 5000;
+//const host = process.env.HOST || '104.248.48.153';
+//const port = 5000;
 
 app.get('/', (req, res) => res.send('Esta es la api de foobe.com.ar'));
 
 // iniciar app
-app.listen(port, host, () => {
-	console.log('el servidor está funcionando en el puerto:', port, host);
+app.listen(5000, () => {
+	console.log('el servidor está funcionando en el puerto:', 5000);
 });
