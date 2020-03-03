@@ -33,7 +33,9 @@ module.exports = function() {
 	/******** ZONA ADMINISTRACION *******/
 	//////////////////////////////////////
 	/* CRUD USUARIOS ADMINISTRADORES */
-	router.post('/iniciar-sesion', administradoresController.autenticarUsuario);
+	router.post('/iniciar-sesion', 
+		administradoresController.autenticarUsuario
+	);
 	// Agregar cuenta admin
 	router.post('/crear-admin',
 		administradoresController.registrarUsuario
