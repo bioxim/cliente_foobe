@@ -316,6 +316,10 @@ module.exports = function() {
 	router.delete('/profile/:idPerfil', 
 		perfilController.eliminarPerfil
 	);
+	// Busqueda de un perfil específico
+	router.post('/profile/busqueda/:query',
+		perfilController.buscarPerfil
+	);
 
 	/* CRUD MENSAJES ENTRE USUARIOS */
 

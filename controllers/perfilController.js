@@ -51,6 +51,27 @@ const upload = multer(configuracionMulter).single('imagen');
 
 // Agrega nuevo Perfil
 exports.nuevoPerfil = async (req, res, next) => {
+
+    req.sanitizeBody('nombre').escape();
+    req.sanitizeBody('apellido').escape();
+    req.sanitizeBody('email').escape();
+    req.sanitizeBody('telefono').escape();
+    req.sanitizeBody('sliderhome').escape();
+    req.sanitizeBody('taglineProfile').escape();
+    req.sanitizeBody('empresa').escape();
+    req.sanitizeBody('nacimiento').escape();
+    req.sanitizeBody('profile').escape();
+    req.sanitizeBody('direccion').escape();
+    req.sanitizeBody('pais').escape();
+    req.sanitizeBody('ciudad').escape();
+    req.sanitizeBody('estado').escape();
+    req.sanitizeBody('imagen').escape();
+    req.sanitizeBody('facebook').escape();
+    req.sanitizeBody('linkedin').escape();
+    req.sanitizeBody('twitter').escape();
+    req.sanitizeBody('instagram').escape();
+    req.sanitizeBody('youtube').escape();
+
 	const perfil = new Perfiles(req.body);
 
 	try {
@@ -92,32 +113,15 @@ exports.mostrarPerfil = async (req, res, next) => {
 // Actualiza perfil por id
 exports.actualizarPerfil = async (req, res, next) => {
     try {
-        // construir un nuevo perfil
+        
         let nuevoPerfil = req.body;
-        // tomo el perfil anterior
-        let perfilAnterior = await Perfiles.findById(req.params.idPerfil);
-        //console.log(perfilAnterior);
-
-        let imagenAnteriorPath = __dirname + `../../uploads/profiles/${perfilAnterior.imagen}`;
-        //console.log(imagenAnteriorPath);
-
-        if(perfilAnterior.imagen !== '') {
-            fs.unlink(imagenAnteriorPath, (error) => {
-                if(error) {
-                    console.log(error);
-                }
-                return;
-            })
-        }
 
         // verificar si hay imagen nueva
         if(req.file) {
-            //Guardo nueva imagen
             nuevoPerfil.imagen = req.file.filename;
-
         } else {
+            let perfilAnterior = await Perfiles.findById(req.params.idPerfil);
             nuevoPerfil.imagen = perfilAnterior.imagen;
-            
         }
 
         let perfil = await Perfiles.findOneAndUpdate({ _id: req.params.idPerfil }, nuevoPerfil, {
@@ -148,6 +152,19 @@ exports.eliminarPerfil = async (req, res, next) => {
         }
         await Perfiles.findByIdAndDelete({ _id: req.params.idPerfil });
         res.json({ mensaje: 'This profile has been deleted'});
+    } catch(error) {
+        console.log(error);
+        next();
+    }
+}
+
+// Buscar un perfil en particular
+exports.buscarPerfil = async (req, res, next) => {
+    try {
+        // obtener el query
+        const { query } = req.params;
+        const perfil = await Perfiles.find({});
+        res.json(perfil);
     } catch(error) {
         console.log(error);
         next();

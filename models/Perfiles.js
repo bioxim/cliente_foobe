@@ -10,6 +10,10 @@ const perfilesSchema = new Schema({
 		type: String,
 		trim: true
 	},
+	email: {
+		type: String,
+		trim: true
+	},
 	imagen: String,
 	taglineProfile: {
 		type: String,
@@ -65,8 +69,8 @@ const perfilesSchema = new Schema({
 		trim: true
 	},
 	sliderhome: {
-		type: Number,
-		default: 0
+		type: String,
+		default: '1'
 	}
 });
 
