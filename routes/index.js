@@ -18,8 +18,6 @@ const librosFController = require('../controllers/librosFController');
 const usuariosController = require('../controllers/usuariosController');
 const clientesVistasController = require('../controllers/clientesVistasController');
 
-const objetosController = require('../controllers/objetosController');
-const perfilController = require('../controllers/perfilController');
 const mensajeController = require('../controllers/mensajeController');
 
 // middle para proteger las rutas
@@ -292,33 +290,28 @@ module.exports = function() {
 		librosFController.mostrarLibrosF
 	);
 
-	/* CRUD PERFILES USUARIOS */
+	/* CRUD AUTONOMÍA DE MIEMBROS - PERFIL AMPLIADO */
 
-	// Agregar
-	router.post('/profile', 
-		perfilController.subirImagen,
-		perfilController.nuevoPerfil
-	);
 	// Mostrar todos
-	router.get('/profile', 
-		perfilController.mostrarPerfiles
+	router.get('/perfilampliado', 
+		usuariosController.mostrarUsuarios
 	);
 	// Mostrar uno por id
-	router.get('/profile/:idPerfil', 
-		perfilController.mostrarPerfil
+	router.get('/perfilampliado/:idUsuario', 
+		usuariosController.mostrarUsuario
 	);
 	// Editar uno por id
-	router.put('/profile/:idPerfil', 
-		perfilController.subirImagen, 
-		perfilController.actualizarPerfil
+	router.put('/perfilampliado/:idUsuario', 
+		usuariosController.subirImagen, 
+		usuariosController.actualizarUsuario
 	);
 	// Eliminar uno por id
-	router.delete('/profile/:idPerfil', 
-		perfilController.eliminarPerfil
+	router.delete('/perfilampliado/:idUsuario', 
+		usuariosController.eliminarUsuario
 	);
 	// Busqueda de un perfil específico
-	router.post('/profile/busqueda/:query',
-		perfilController.buscarPerfil
+	router.post('/perfilampliado/busqueda/:query',
+		usuariosController.buscarUsuario
 	);
 
 	/* CRUD MENSAJES ENTRE USUARIOS */
@@ -342,29 +335,6 @@ module.exports = function() {
 	// Eliminar uno por id
 	router.delete('/messages/:idMessage',
 		mensajeController.eliminarMensaje
-	);	
-
-	/* MANEJO DE LOS OBJETOS-USUARIO REGISTRADO */
-	
-	// Agregar
-	router.post('/activity/nuevo/:idCliente', 
-		objetosController.nuevoObjeto
-	);
-	// Mostrar todos
-	router.get('/activity', 
-		objetosController.mostrarObjetos
-	);
-	// Mostrar uno por id
-	router.get('/activity/:idObjeto', 
-		objetosController.mostrarObjeto
-	);
-	// Editar uno por id
-	router.put('/activity/:idObjeto', 
-		objetosController.actualizarObjeto
-	);
-	// Eliminar uno por id
-	router.delete('/activity/:idObjeto',
-		objetosController.eliminarObjeto
 	);	
 
 	return router;
