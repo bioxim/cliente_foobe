@@ -11,7 +11,7 @@ const objetosSchema = new Schema({
 			type: Schema.ObjectId,
 			ref: 'Perfiles'
 		}
-	}] 
+	}]
 });
 
 module.exports = mongoose.model('Objetos', objetosSchema);

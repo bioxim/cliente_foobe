@@ -163,7 +163,7 @@ exports.buscarPerfil = async (req, res, next) => {
     try {
         // obtener el query
         const { query } = req.params;
-        const perfil = await Perfiles.find({});
+        const perfil = await Perfiles.find({email: new RegExp(query, 'i')});
         res.json(perfil);
     } catch(error) {
         console.log(error);

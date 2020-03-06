@@ -347,7 +347,7 @@ module.exports = function() {
 	/* MANEJO DE LOS OBJETOS-USUARIO REGISTRADO */
 	
 	// Agregar
-	router.post('/activity', 
+	router.post('/activity/nuevo/:idCliente', 
 		objetosController.nuevoObjeto
 	);
 	// Mostrar todos
