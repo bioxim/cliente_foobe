@@ -6,10 +6,6 @@ const usuariosSchema = new Schema({
 		type: String,
 		trim: true
 	},
-	apellido: {
-		type: String,
-		trim: true
-	},
 	email: {
 		type: String,
 		unique: true,

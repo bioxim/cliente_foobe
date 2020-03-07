@@ -74,6 +74,7 @@ module.exports = function() {
 	);
 	// Editar uno por id
 	router.put('/clientes/editar/:idCliente',
+		administradoresController.subirImagen,
 		administradoresController.actualizarCliente
 	);
 	// Eliminar uno por id
@@ -288,30 +289,6 @@ module.exports = function() {
 	/* VISTAS LIBROS DE PDFs */
 	router.get('/list',
 		librosFController.mostrarLibrosF
-	);
-
-	/* CRUD AUTONOMÍA DE MIEMBROS - PERFIL AMPLIADO */
-
-	// Mostrar todos
-	router.get('/perfilampliado', 
-		usuariosController.mostrarUsuarios
-	);
-	// Mostrar uno por id
-	router.get('/perfilampliado/:idUsuario', 
-		usuariosController.mostrarUsuario
-	);
-	// Editar uno por id
-	router.put('/perfilampliado/:idUsuario', 
-		usuariosController.subirImagen, 
-		usuariosController.actualizarUsuario
-	);
-	// Eliminar uno por id
-	router.delete('/perfilampliado/:idUsuario', 
-		usuariosController.eliminarUsuario
-	);
-	// Busqueda de un perfil específico
-	router.post('/perfilampliado/busqueda/:query',
-		usuariosController.buscarUsuario
 	);
 
 	/* CRUD MENSAJES ENTRE USUARIOS */
