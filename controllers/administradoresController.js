@@ -3,6 +3,10 @@ const Usuarios = require('../models/Usuarios');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
+const multer = require('multer');
+const shortid = require('shortid');
+const fs = require('fs');
+
 exports.registrarCliente = async (req, res) => {
 
 	// leer los datos del usuario y colocarlos en Usuarios
@@ -133,10 +137,6 @@ exports.buscarAdministrador = async (req, res, next) => {
 
 // CRUD DE CLIENTES REGISTRADOS //
 
-const multer = require('multer');
-const shortid = require('shortid');
-const fs = require('fs');
-
 exports.subirImagen = (req, res, next) => {
 	upload(req, res, function(error) {
 		//console.log(error);
@@ -201,8 +201,6 @@ exports.mostrarCliente = async (req, res, next) => {
 		res.json({ mensaje: 'Ese usuario no existe' });
 		return next();
 	}
-
-	// Mostrar el pedido
 	res.json(usuario);
 }
 

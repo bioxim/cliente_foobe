@@ -1,5 +1,6 @@
 const Tarjetas = require('../models/Tarjetas');
 const Libros = require('../models/Libros');
+const Usuarios = require('../models/Usuarios');
 
 // Muestra todos los cards
 exports.mostrarTarjetas = async (req, res, next) => {
