@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose2 = require('mongoose');
+const Schema = mongoose2.Schema;
 
 const usuariosSchema = new Schema({
 	nombre: {
@@ -69,11 +69,7 @@ const usuariosSchema = new Schema({
 	youtube: {
 		type: String,
 		trim: true
-	},
-	sliderhome: {
-		type: String,
-		default: '1'
 	}
 });
 
-module.exports = mongoose.model('Usuarios', usuariosSchema);
+module.exports = mongoose2.model('Usuarios', usuariosSchema);

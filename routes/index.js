@@ -42,9 +42,9 @@ module.exports = function() {
 	router.get('/administradores',
 		administradoresController.mostrarUsuarios
 	);
-	// Mostrar un usuario por id
+	// Mostrar un usuario por su id
 	router.get('/administradores/:idUsuario', 
-		administradoresController.mostrarUsuarios
+		administradoresController.mostrarUsuario
 	);
 	// Editar uno por id
 	router.put('/administradores/:idUsuario',
