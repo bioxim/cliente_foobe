@@ -74,7 +74,6 @@ module.exports = function() {
 	);
 	// Editar uno por id
 	router.put('/clientes/editar/:idCliente',
-		administradoresController.subirImagen,
 		administradoresController.actualizarCliente
 	);
 	// Eliminar uno por id
@@ -279,6 +278,9 @@ module.exports = function() {
 	///////////////////////////////////////
 	/* INICIAR SESIÓN */
 	router.post('/login', usuariosController.autenticarUsuario);
+	/* MOSTRAR CARACTERISTICAS DE PERFIL */
+	router.get('/perfil/buscar/:query', usuariosController.mostrarUsuario);
+
 	/* VISTAS TARJETAs Y LIBROS DE CLIENTES */
 	router.get('/all-cards',
 		clientesVistasController.mostrarTarjetas
@@ -312,7 +314,7 @@ module.exports = function() {
 	// Eliminar uno por id
 	router.delete('/messages/:idMessage',
 		mensajeController.eliminarMensaje
-	);	
+	);
 
 	return router;
 }

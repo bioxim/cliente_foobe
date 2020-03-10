@@ -38,7 +38,7 @@ exports.autenticarUsuario = async (req, res, next) => {
 // Muestra todos los usuarios
 exports.mostrarUsuarios = async (req, res, next) => {
 	try {
-		const usuarios = await Usuarios.find({}).populate('perfil');
+		const usuarios = await Usuarios.find({});
 		res.json(usuarios);
 	} catch(error) {
 		// statements
@@ -47,17 +47,17 @@ exports.mostrarUsuarios = async (req, res, next) => {
 	}
 }
 
-// Muestra un usuario por su ID
+// Muestra un usuario por su email
 exports.mostrarUsuario = async (req, res, next) => {
-	const usuario = await Usuarios.findById(req.params.idUsuario).populate('perfil');
-
-	if(!usuario) {
-		res.json({ mensaje: 'This profile does not exist' });
-		return next();
+	try {
+		// obtener el query
+		const { query } = req.params;
+		const usuario = await Usuarios.find({ email: new RegExp(query, 'i') });
+		res.json(usuario);
+	} catch(error) {
+		console.log(error);
+		next();
 	}
-
-	// Mostrar el pedido
-	res.json(usuario);
 }
 
 // Actualiza un usuario por su ID
@@ -65,8 +65,7 @@ exports.actualizarUsuario = async (req, res, next) => {
 	try {
 		let usuario = await Usuarios.findOneAndUpdate({ _id: req.params.idUsuario }, req.body, {
 			new: true
-		})
-		.populate('perfil');
+		});
 
 		res.json(usuario);
 
