@@ -22,7 +22,7 @@ exports.autenticarUsuario = async (req, res, next) => {
 			const token = jwt.sign({
 				email: usuario.email,
 				nombre: usuario.nombre,
-				id: usuario._id
+				id: usuario.id
 			},
 			'LLAVESECRETA',
 			{

@@ -8,6 +8,7 @@ const contenidoController = require('../controllers/contenidoController');
 const changelogController = require('../controllers/changelogController');
 const documentationController = require('../controllers/documentationController');
 const productoresController = require('../controllers/productoresController');
+const newslettersController = require('../controllers/newslettersController');
 
 const feriaController = require('../controllers/feriaController');
 const cardController = require('../controllers/cardController');
@@ -17,8 +18,6 @@ const librosFController = require('../controllers/librosFController');
 /** ZONA CLIENTES **/
 const usuariosController = require('../controllers/usuariosController');
 const clientesVistasController = require('../controllers/clientesVistasController');
-
-const mensajeController = require('../controllers/mensajeController');
 
 // middle para proteger las rutas
 const auth = require('../middleware/auth');
@@ -296,24 +295,24 @@ module.exports = function() {
 	/* CRUD MENSAJES ENTRE USUARIOS */
 
 	// Agregar
-	router.post('/messages', 
-		mensajeController.nuevoMensaje
+	router.post('/newsletter', 
+		newslettersController.nuevoSuscriptor
 	);
 	// Mostrar todos
-	router.get('/messages', 
-		mensajeController.mostrarMensajes
+	router.get('/newsletter', 
+		newslettersController.mostrarSuscriptores
 	);
 	// Mostrar uno por id
-	router.get('/messages/:idMessage', 
-		mensajeController.mostrarMensaje
+	router.get('/newsletter/:idSuscriptor', 
+		newslettersController.mostrarSuscriptor
 	);
 	// Editar uno por id
-	router.put('/messages/:idMessage', 
-		mensajeController.actualizarMensaje
+	router.put('/newsletter/:idSuscriptor', 
+		newslettersController.actualizarSuscriptor
 	);
 	// Eliminar uno por id
-	router.delete('/messages/:idMessage',
-		mensajeController.eliminarMensaje
+	router.delete('/newsletter/:idSuscriptor',
+		newslettersController.eliminarSuscriptor
 	);
 
 	return router;
