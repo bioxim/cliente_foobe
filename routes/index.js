@@ -292,8 +292,6 @@ module.exports = function() {
 		librosFController.mostrarLibrosF
 	);
 
-	/* CRUD MENSAJES ENTRE USUARIOS */
-
 	// Agregar
 	router.post('/newsletter', 
 		newslettersController.nuevoSuscriptor

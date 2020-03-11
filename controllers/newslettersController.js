@@ -4,7 +4,6 @@ const Newsletters = require('../models/Newsletters');
 exports.nuevoSuscriptor = async (req, res, next) => {
 
     req.sanitizeBody('email').escape();
-    req.sanitizeBody('alta').escape();
 
 	const suscriptor = new Newsletters(req.body);
 
@@ -13,14 +12,13 @@ exports.nuevoSuscriptor = async (req, res, next) => {
 		res.json({ mensaje: 'Welcome to our newsletter' });
 	} catch(error) {
 		console.log(error);
-		res.json({mensaje: 'You are already subscribed'});
 		next();
 	} 
 }
 
 exports.mostrarSuscriptores = async (req, res, next) => {
 	try {
-		const suscriptores = await Newsletters.find({}).sort({'alta': 'desc'});
+		const suscriptores = await Newsletters.find({});
 		res.json(suscriptores);
 	} catch(error) {
 		console.log(error);

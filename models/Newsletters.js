@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const newsletterSchema = new Schema({
+const newslettersSchema = new Schema({
 	email: {
 		type: String,
-		unique: true,
 		lowercase: true,
 		trim: true
 	},
@@ -14,4 +13,4 @@ const newsletterSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('Newsletters', newsletterSchema);
+module.exports = mongoose.model('Newsletters', newslettersSchema);
