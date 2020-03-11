@@ -4,6 +4,7 @@ const Newsletters = require('../models/Newsletters');
 exports.nuevoSuscriptor = async (req, res, next) => {
 
     req.sanitizeBody('email').escape();
+    req.sanitizeBody('alta').escape();
 
 	const suscriptor = new Newsletters(req.body);
 
@@ -19,7 +20,7 @@ exports.nuevoSuscriptor = async (req, res, next) => {
 
 exports.mostrarSuscriptores = async (req, res, next) => {
 	try {
-		const suscriptores = await Newsletters.find({}).sort({'alta': 'desc'});;
+		const suscriptores = await Newsletters.find({}).sort({'alta': 'desc'});
 		res.json(suscriptores);
 	} catch(error) {
 		console.log(error);
