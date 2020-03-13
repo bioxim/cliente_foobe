@@ -2,8 +2,4 @@ node_modules
 .DS_Store
 DB
 variables.env
-uploads/docs
-uploads/pdfs
-uploads/tradeshows
-uploads/profiles
 index.js
