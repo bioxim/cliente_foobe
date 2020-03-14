@@ -9,6 +9,7 @@ const changelogController = require('../controllers/changelogController');
 const documentationController = require('../controllers/documentationController');
 const productoresController = require('../controllers/productoresController');
 const newslettersController = require('../controllers/newslettersController');
+const productoController = require('../controllers/productoController');
 
 const feriaController = require('../controllers/feriaController');
 const cardController = require('../controllers/cardController');
@@ -270,6 +271,29 @@ module.exports = function() {
 	// Eliminar uno por id
 	router.delete('/productores/:idProductor',
 		productoresController.eliminarProductor
+	);
+
+	/* CRUD MANEJO DEL CÓDIGO DE PRODUCTOS ARMONIZADO HS6 */
+
+	// Agregar
+	router.post('/producto', 
+		productoController.nuevoProducto
+	);
+	// Mostrar todos
+	router.get('/productos', 
+		productoController.mostrarProductos
+	);
+	// Mostrar uno por id
+	router.get('/producto/:idProducto', 
+		productoController.mostrarProducto
+	);
+	// Editar uno por id
+	router.put('/producto/:idProducto', 
+		productoController.actualizarProducto
+	);
+	// Eliminar uno por id
+	router.delete('/producto/:idProducto',
+		productoController.eliminarProducto
 	);
 
 	///////////////////////////////////////
