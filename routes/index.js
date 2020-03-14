@@ -10,6 +10,7 @@ const documentationController = require('../controllers/documentationController'
 const productoresController = require('../controllers/productoresController');
 const newslettersController = require('../controllers/newslettersController');
 const productoController = require('../controllers/productoController');
+const calendarioController = require('../controllers/calendarioController');
 
 const feriaController = require('../controllers/feriaController');
 const cardController = require('../controllers/cardController');
@@ -294,6 +295,31 @@ module.exports = function() {
 	// Eliminar uno por id
 	router.delete('/producto/:idProducto',
 		productoController.eliminarProducto
+	);
+
+	/* CRUD CALENDARIO PARA MOSTRAR PLANIFICACION DE FERIAS */
+
+	// Agregar
+	router.post('/calendario', 
+		calendarioController.subirImagen,
+		calendarioController.nuevoCalendario
+	);
+	// Mostrar todos
+	router.get('/calendarios', 
+		calendarioController.mostrarCalendarios
+	);
+	// Mostrar uno por id
+	router.get('/calendario/:idCalendario', 
+		calendarioController.mostrarCalendario
+	);
+	// Editar uno por id
+	router.put('/calendario/:idCalendario', 
+		calendarioController.subirImagen,
+		calendarioController.actualizarCalendario
+	);
+	// Eliminar uno por id
+	router.delete('/calendario/:idCalendario',
+		calendarioController.eliminarCalendario
 	);
 
 	///////////////////////////////////////
