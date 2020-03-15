@@ -67,7 +67,7 @@ exports.nuevoCalendario = async (req, res, next) => {
 // Muestra todos los contenidos
 exports.mostrarCalendarios = async (req, res, next) => {
 	try {
-		const calendarios = await Calendarios.find({});
+		const calendarios = await Calendarios.find({}).sort({'fechainicial': 'asc'});
 		res.json(calendarios);
 	} catch(error) {
 		// statements
