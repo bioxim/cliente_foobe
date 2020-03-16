@@ -55,7 +55,7 @@ app.use(cors(corsOptions));
 app.use('/', routes());
 
 const host = '64.227.16.1' || process.env.HOST;
-const port = process.env.PORT || 5000;
+const port = 4000;
 
 app.get('/', (req, res) => res.send('Esta es la api de foobe.com.ar'));
 
