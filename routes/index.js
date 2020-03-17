@@ -63,6 +63,7 @@ module.exports = function() {
 	/* CRUD USUARIOS CLIENTES */
 	// agregar cliente
 	router.post('/crear-cuenta',
+		administradoresController.subirImagen,
 		administradoresController.registrarCliente
 	);
 	// Mostrar todos
@@ -75,6 +76,7 @@ module.exports = function() {
 	);
 	// Editar uno por id
 	router.put('/clientes/editar/:idCliente',
+		administradoresController.subirImagen,
 		administradoresController.actualizarCliente
 	);
 	// Eliminar uno por id

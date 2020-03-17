@@ -16,6 +16,19 @@ const usuariosSchema = new Schema({
 		type: String,
 		trim: true,
 		default: 'This is my name'
+	},
+	tagline: {
+		type: String,
+		trim: true,
+		default: 'Foobes Member'
+	},
+	imagen: {
+		type: String,
+		default: 'avatar-static.jpg'
+	},
+	registro: {
+		type: Date,
+		default: Date.now()
 	}
 });
 

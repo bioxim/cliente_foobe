@@ -3,6 +3,54 @@ const Usuarios = require('../models/Usuarios');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
+const multer = require('multer');
+const shortid = require('shortid');
+const fs = require('fs');
+
+exports.subirImagen = (req, res, next) => {
+	upload(req, res, function(error) {
+		//console.log(error);
+		if(error) {
+			if(error instanceof multer.MulterError) {
+				if(error.code === 'LIMIT_FILE_SIZE') {
+					res.json( { mensaje: 'El archivo es muy grande: Máximo 100kb' } );
+				} else {
+					res.json({ mensaje: 'Error no LIMIT_FILE_SIZE' });
+				}
+			} else {
+				//console.log(error.message);
+				res.json({ mensaje: error.message });
+			}
+			return;
+		} else {
+			return next();
+		}
+	});
+}
+// Opciones de Multer
+const configuracionMulter = {
+	limits: { fileSize : 100000 },
+	storage: fileStorage = multer.diskStorage({
+        destination : (req, file, cb) => {
+            cb(null, __dirname+'../../uploads/profiles');
+        }, 
+        filename : (req, file, cb) => {
+            const extension = file.mimetype.split('/')[1];
+            cb(null, `${shortid.generate()}.${extension}`);
+        }
+    }),
+    fileFilter(req, file, cb) {
+        if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' ) {
+            // el callback se ejecuta como true o false : true cuando la imagen se acepta
+            cb(null, true);
+        } else {
+            cb(new Error('Invalid Format'));
+        }
+    }
+}
+
+const upload = multer(configuracionMulter).single('imagen');
+
 exports.registrarCliente = async (req, res) => {
 
 	// leer los datos del usuario y colocarlos en Usuarios
@@ -10,6 +58,9 @@ exports.registrarCliente = async (req, res) => {
 	usuario.password = await bcrypt.hash(req.body.password, 12);
 
 	try {
+		if(req.file.filename) {
+            usuario.imagen = req.file.filename
+        }
 		await usuario.save();
 		res.json({mensaje: 'Cliente Creado Correctamente'});
 	} catch(error) {
@@ -158,8 +209,37 @@ exports.mostrarCliente = async (req, res, next) => {
 
 // Actualiza un usuario por su ID
 exports.actualizarCliente = async (req, res, next) => {
+
+	req.sanitizeBody('nombre').escape();
+    req.sanitizeBody('email').escape();
+    req.sanitizeBody('tagline').escape();
+
 	try {
-		let usuario = await Usuarios.findOneAndUpdate({ _id: req.params.idCliente }, req.body, {
+
+		let nuevoUsuario = req.body;
+
+		let usuarioAnterior = await Usuarios.findById(req.params.idCliente);
+
+		let imagenAnteriorPath = __dirname + `../../uploads/profiles/${usuarioAnterior.imagen}`;
+
+		if(usuarioAnterior.imagen !== '') {
+            fs.unlink(imagenAnteriorPath, (error) => {
+                if(error) {
+                    console.log(error);
+                }
+                return;
+            })
+        }
+
+        if(req.file) {
+            //Guardo nueva imagen
+            nuevoUsuario.imagen = req.file.filename;
+
+        } else {
+            nuevoUsuario.imagen = usuarioAnterior.imagen;
+        }
+
+		let usuario = await Usuarios.findOneAndUpdate({ _id: req.params.idCliente }, nuevoUsuario, {
 			new: true
 		});
 
@@ -174,12 +254,24 @@ exports.actualizarCliente = async (req, res, next) => {
 // Eliminar un usuario por ID
 exports.eliminarCliente = async (req, res, next) => {
 	try {
-		await Usuarios.findOneAndDelete({ _id: req.params.idCliente });
-		res.json({ mensaje: 'El libro se ha eliminado' });
-	} catch(error) {
-		console.log(error);
-		next();
-	}
+        let usuario = await Usuarios.findById(req.params.idCliente);
+
+        let imagen = __dirname + `../../uploads/profiles/${usuario.imagen}`;
+        //console.log(imagen);
+        if(usuario.imagen !== '') {
+            fs.unlink(imagen, (error) => {
+                if(error) {
+                    console.log(error);
+                }
+                return;
+            })
+        }
+        await Usuarios.findByIdAndDelete({ _id: req.params.idCliente });
+        res.json({ mensaje: 'Este usuario fue eliminado'});
+    } catch(error) {
+        console.log(error);
+        next();
+    }
 }
 
 // Buscar Cliente por email
