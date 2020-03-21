@@ -211,7 +211,6 @@ exports.mostrarCliente = async (req, res, next) => {
 exports.actualizarCliente = async (req, res, next) => {
 
 	req.sanitizeBody('nombre').escape();
-    req.sanitizeBody('email').escape();
     req.sanitizeBody('tagline').escape();
 
 	try {
@@ -222,15 +221,6 @@ exports.actualizarCliente = async (req, res, next) => {
 
 		let imagenAnteriorPath = __dirname + `../../uploads/profiles/${usuarioAnterior.imagen}`;
 
-		if(usuarioAnterior.imagen !== '') {
-            fs.unlink(imagenAnteriorPath, (error) => {
-                if(error) {
-                    console.log(error);
-                }
-                return;
-            })
-        }
-
         if(req.file) {
             //Guardo nueva imagen
             nuevoUsuario.imagen = req.file.filename;
@@ -240,6 +230,31 @@ exports.actualizarCliente = async (req, res, next) => {
         }
 
 		let usuario = await Usuarios.findOneAndUpdate({ _id: req.params.idCliente }, nuevoUsuario, {
+			new: true
+		});
+
+		res.json(usuario);
+
+	} catch(error) {
+		console.log(error);
+		next();
+	}
+}
+
+exports.actualizarCliente2 = async (req, res, next) => {
+
+	
+
+	try {
+		// construir un nuevo producto
+		let nuevoPerfil = req.body;
+
+		// verificar si hay imagen nueva
+		if(req.file) {
+			nuevoPerfil.imagen = req.file.filename;
+		} 
+
+		let usuario = await Usuarios.findOneAndUpdate({ _id: req.params.idCliente }, nuevoPerfil, {
 			new: true
 		});
 

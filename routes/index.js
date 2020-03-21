@@ -11,6 +11,7 @@ const productoresController = require('../controllers/productoresController');
 const newslettersController = require('../controllers/newslettersController');
 const productoController = require('../controllers/productoController');
 const calendarioController = require('../controllers/calendarioController');
+const monedaController = require('../controllers/monedaController');
 
 const feriaController = require('../controllers/feriaController');
 const cardController = require('../controllers/cardController');
@@ -78,6 +79,11 @@ module.exports = function() {
 	router.put('/clientes/editar/:idCliente',
 		administradoresController.subirImagen,
 		administradoresController.actualizarCliente
+	);
+	// Editar uno por id en el Frontend
+	router.put('/miembro/editar/:idCliente',
+		administradoresController.subirImagen,
+		administradoresController.actualizarCliente2
 	);
 	// Eliminar uno por id
 	router.delete('/clientes/:idCliente', 
@@ -363,6 +369,26 @@ module.exports = function() {
 	// Eliminar uno por id
 	router.delete('/newsletter/:idSuscriptor',
 		newslettersController.eliminarSuscriptor
+	);
+
+	/* CRUD MONEDAS PARA HACER EL CONVERSOR */
+	router.post('/monedas', 
+		monedaController.nueva
+	);
+	router.get('/monedas', 
+		monedaController.mostrar
+	);
+	// Mostrar uno por id
+	router.get('/monedas/:idMoneda', 
+		monedaController.mostrarId
+	);
+	// Editar uno por id
+	router.put('/monedas/:idMoneda', 
+		monedaController.actualizar
+	);
+	// Eliminar uno por id
+	router.delete('/monedas/:idMoneda',
+		monedaController.eliminar
 	);
 
 	return router;
