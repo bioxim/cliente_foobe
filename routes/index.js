@@ -80,11 +80,6 @@ module.exports = function() {
 		administradoresController.subirImagen,
 		administradoresController.actualizarCliente
 	);
-	// Editar uno por id en el Frontend
-	router.put('/miembro/editar/:idCliente',
-		administradoresController.subirImagen,
-		administradoresController.actualizarCliente2
-	);
 	// Eliminar uno por id
 	router.delete('/clientes/:idCliente', 
 		administradoresController.eliminarCliente

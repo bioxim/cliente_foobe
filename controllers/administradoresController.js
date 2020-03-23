@@ -212,6 +212,16 @@ exports.actualizarCliente = async (req, res, next) => {
 
 	req.sanitizeBody('nombre').escape();
     req.sanitizeBody('tagline').escape();
+    req.sanitizeBody('imagen').escape();
+    req.sanitizeBody('nacimiento').escape();
+    req.sanitizeBody('actividad').escape();
+    req.sanitizeBody('linkedin').escape();
+    req.sanitizeBody('facebook').escape();
+    req.sanitizeBody('twitter').escape();
+    req.sanitizeBody('instagram').escape();
+    req.sanitizeBody('empresa').escape();
+    req.sanitizeBody('direccion').escape();
+    req.sanitizeBody('pais').escape();
 
 	try {
 
@@ -230,31 +240,6 @@ exports.actualizarCliente = async (req, res, next) => {
         }
 
 		let usuario = await Usuarios.findOneAndUpdate({ _id: req.params.idCliente }, nuevoUsuario, {
-			new: true
-		});
-
-		res.json(usuario);
-
-	} catch(error) {
-		console.log(error);
-		next();
-	}
-}
-
-exports.actualizarCliente2 = async (req, res, next) => {
-
-	
-
-	try {
-		// construir un nuevo producto
-		let nuevoPerfil = req.body;
-
-		// verificar si hay imagen nueva
-		if(req.file) {
-			nuevoPerfil.imagen = req.file.filename;
-		} 
-
-		let usuario = await Usuarios.findOneAndUpdate({ _id: req.params.idCliente }, nuevoPerfil, {
 			new: true
 		});
 

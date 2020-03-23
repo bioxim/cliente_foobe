@@ -22,13 +22,40 @@ const usuariosSchema = new Schema({
 		trim: true,
 		default: 'Foobes Member'
 	},
-	imagen: {
-		type: String,
-		default: 'avatar-static.jpg'
-	},
+	imagen: String,
 	registro: {
 		type: Date,
 		default: Date.now()
+	},
+	nacimiento: Date,
+	actividad: String,
+	linkedin: {
+		type: String,
+		trim: true
+	},
+	facebook: {
+		type: String,
+		trim: true
+	},
+	twitter: {
+		type: String,
+		trim: true
+	},
+	instagram: {
+		type: String,
+		trim: true
+	},
+	empresa: {
+		type: String,
+		trim: true
+	},
+	direccion: {
+		type: String,
+		trim: true
+	},
+	pais: {
+		type: String,
+		trim: true
 	}
 });
 
