@@ -56,7 +56,19 @@ const usuariosSchema = new Schema({
 	pais: {
 		type: String,
 		trim: true
-	}
+	},
+	mensajes: [{
+		mensaje: {
+			type: String,
+			trim: true
+		}
+	}],
+	amigos: [{
+		amigo: {
+			type: String,
+			trim: true
+		}
+	}]
 });
 
 module.exports = mongoose.model('Usuarios', usuariosSchema);
