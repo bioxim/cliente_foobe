@@ -241,7 +241,9 @@ exports.actualizarCliente = async (req, res, next) => {
 
 		let usuario = await Usuarios.findOneAndUpdate({ _id: req.params.idCliente }, nuevoUsuario, {
 			new: true
-		});
+		}).populate({
+				path: 'amigos.amigo'
+			});
 
 		res.json(usuario);
 

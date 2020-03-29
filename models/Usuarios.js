@@ -64,11 +64,9 @@ const usuariosSchema = new Schema({
 		}
 	}],
 	amigos: [{
-		amigo: {
 			type: String,
-			trim: true
-		}
-	}]
+			trim: true	
+		}]
 });
 
 module.exports = mongoose.model('Usuarios', usuariosSchema);
