@@ -288,3 +288,15 @@ exports.buscarCliente = async (req, res, next) => {
 		next();
 	}
 }
+
+exports.Contactos = async (req, res, next) => {
+	try {
+		// obtener el query
+		const { query } = req.params;
+		const usuario = await Usuarios.find({ _id: new RegExp(query, 'i') });
+		res.json(usuario);
+	} catch(error) {
+		console.log(error);
+		next();
+	}
+}

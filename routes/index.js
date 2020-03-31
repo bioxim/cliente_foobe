@@ -89,6 +89,10 @@ module.exports = function() {
 		administradoresController.buscarCliente
 	);
 
+	router.post('/clientes/contactos/:query',
+		administradoresController.Contactos
+	);
+
 	/* CRUD SECCIONES WEB CONTENIDOS */
 	// Agregar
 	router.post('/contenidos', 
