@@ -60,6 +60,6 @@ const port = 5000;
 app.get('/', (req, res) => res.send('Esta es la api de foobe.com.ar'));
 
 // iniciar app
-app.listen(port, host, () => {
+app.listen(port, () => {
 	console.log('el servidor está funcionando en el puerto:', port);
 });
