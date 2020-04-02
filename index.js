@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Definir un dominio(s) para recibir las peticiones
-const whitelist = [process.env.FRONTEND_URL, process.env.BACKEND_URL, process.env.CLIENTE, process.env.FRONTEND];
+const whitelist = [process.env.FRONTEND_URL, process.env.BACKEND_URL, process.env.CLIENTE, process.env.FRONTEND, process.env.ADMIN];
 const corsOptions = {
 	origin: (origin, callback) => {
 		//console.log(origin);
@@ -59,7 +59,7 @@ const port = 5000;
 
 app.get('/', (req, res) => res.send('Esta es la api de foobe.com.ar'));
 
-// iniciar app
+// iniciar app (agrego host para el localhost)
 app.listen(port, () => {
 	console.log('el servidor está funcionando en el puerto:', port);
 });
