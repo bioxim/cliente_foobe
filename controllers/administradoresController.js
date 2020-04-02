@@ -108,7 +108,7 @@ exports.autenticarUsuario = async (req, res, next) => {
 				nombre: usuario.nombre,
 				id: usuario._id
 			},
-			'SUPERADMINQWEIQW#$$#!!!!',
+			'LLAVESECRETA',
 			{
 				expiresIn: '8h'
 			});

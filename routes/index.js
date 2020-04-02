@@ -24,7 +24,6 @@ const clientesVistasController = require('../controllers/clientesVistasControlle
 
 // middle para proteger las rutas
 const auth = require('../middleware/auth');
-const authAdmin = require('../middleware/authAdmin');
 
 
 module.exports = function() {
