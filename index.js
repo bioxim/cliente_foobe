@@ -34,10 +34,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Definir un dominio(s) para recibir las peticiones
-const whitelist = [process.env.FRONTEND_URL, process.env.BACKEND_URL, process.env.CLIENTE, process.env.FRONTEND, process.env.ADMIN, 'https://admin.foobe.com.ar'];
+const whitelist = [process.env.FRONTEND_URL, process.env.BACKEND_URL, process.env.FRONTEND, process.env.ADMIN, ''];
+//console.log(whitelist);
 const corsOptions = {
 	origin: (origin, callback) => {
-		//console.log(origin);
+		console.log(origin);
 		// Revisar si la petición viene de un servidor que está en la lista whitelist
 		const existe = whitelist.some( dominio => dominio === origin );
 		if(existe) {
