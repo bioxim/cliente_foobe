@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Definir un dominio(s) para recibir las peticiones
-const whitelist = [process.env.FRONTEND_URL, process.env.BACKEND_URL, process.env.FRONTEND, process.env.ADMIN];
+const whitelist = [process.env.FRONTEND_URL, process.env.BACKEND_URL, process.env.FRONTEND];
 //console.log(whitelist);
 const corsOptions = {
 	origin: (origin, callback) => {
