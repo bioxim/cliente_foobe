@@ -6,7 +6,7 @@ const expressValidator = require('express-validator');
 require ('dotenv').config({ path: 'variables.env'});
 
 // Cors permite que un cliente se conecte a otro servidor para el intercambio de recursos
-const cors = require('cors');
+//const cors = require('cors');
 
 // conectar mongo
 mongoose.Promise = global.Promise;
@@ -34,9 +34,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Definir un dominio(s) para recibir las peticiones
-const whitelist = [process.env.FRONTEND_URL, process.env.BACKEND_URL, process.env.FRONTEND, process.env.CLIENTE, process.env.SERVIDORLOCAL, process.env.API];
+//const whitelist = [process.env.FRONTEND_URL, process.env.BACKEND_URL, process.env.FRONTEND, process.env.CLIENTE, process.env.SERVIDORLOCAL, process.env.API];
 //console.log(whitelist);
-const corsOptions = {
+/*const corsOptions = {
 	origin: (origin, callback) => {
 		//console.log(origin);
 		// Revisar si la petición viene de un servidor que está en la lista whitelist
@@ -47,10 +47,18 @@ const corsOptions = {
 			callback(new Error('No permitido por CORS'));
 		}
 	}
-}
+}*/
 
 // Habilitar cors
-app.use(cors(corsOptions));
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
+});
+
+//app.use(cors(corsOptions));
 
 // Rutas de la App
 app.use('/', routes());
