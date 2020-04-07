@@ -21,6 +21,7 @@ const librosFController = require('../controllers/librosFController');
 /** ZONA CLIENTES **/
 const usuariosController = require('../controllers/usuariosController');
 const clientesVistasController = require('../controllers/clientesVistasController');
+const mensajesController = require('../controllers/mensajesController');
 
 // middle para proteger las rutas
 const auth = require('../middleware/auth');
@@ -387,6 +388,26 @@ module.exports = function() {
 	// Eliminar uno por id
 	router.delete('/monedas/:idMoneda',
 		monedaController.eliminar
+	);
+
+	/* CRUD MENSAJERIA INSTANTANEA ENTRE USUARIOS */
+	router.post('/msg', 
+		mensajesController.nuevoMensaje
+	);
+	router.get('/msg', 
+		mensajesController.mostrarMensajes
+	);
+	// Mostrar uno por id
+	router.get('/msg/:idMensaje', 
+		mensajesController.mostrarMensaje
+	);
+	// Editar uno por id
+	router.put('/msg/:idMensaje', 
+		mensajesController.actualizarMensaje
+	);
+	// Eliminar uno por id
+	router.delete('/msg/:idMensaje',
+		mensajesController.eliminarMensaje
 	);
 
 	return router;

@@ -220,6 +220,7 @@ exports.actualizarCliente = async (req, res, next) => {
     req.sanitizeBody('twitter').escape();
     req.sanitizeBody('instagram').escape();
     req.sanitizeBody('empresa').escape();
+    req.sanitizeBody('website').escape();
     req.sanitizeBody('direccion').escape();
     req.sanitizeBody('pais').escape();
 

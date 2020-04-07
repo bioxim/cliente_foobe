@@ -49,6 +49,10 @@ const usuariosSchema = new Schema({
 		type: String,
 		trim: true
 	},
+	website: {
+		type: String,
+		trim: true
+	},
 	direccion: {
 		type: String,
 		trim: true
