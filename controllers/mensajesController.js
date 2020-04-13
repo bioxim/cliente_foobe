@@ -14,7 +14,7 @@ exports.nuevoMensaje = async (req, res, next) => {
 // Muestra todos los mensajes por usuario escritor
 exports.mostrarMensajes = async (req, res, next) => {
 	try {
-		const mensajes = await Mensajes.find({});
+		const mensajes = await Mensajes.find({}).sort({'fecha': 'desc'});
 		res.json(mensajes);
 	} catch(error) {
 		console.log(error);

@@ -187,7 +187,7 @@ exports.buscarAdministrador = async (req, res, next) => {
 // Muestra todos los usuarios
 exports.mostrarClientes = async (req, res, next) => {
 	try {
-		const usuarios = await Usuarios.find({});
+		const usuarios = await Usuarios.find({}).sort({'registro': 'desc'});
 		res.json(usuarios);
 	} catch(error) {
 		// statements
@@ -294,7 +294,7 @@ exports.Contactos = async (req, res, next) => {
 	try {
 		// obtener el query
 		const { query } = req.params;
-		const usuario = await Usuarios.find({ _id: new RegExp(query, 'i') });
+		const usuario = await Usuarios.find({query});
 		res.json(usuario);
 	} catch(error) {
 		console.log(error);
