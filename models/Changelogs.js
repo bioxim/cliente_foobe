@@ -6,6 +6,10 @@ const changelogSchema = new Schema({
 	changelog: {
 		type: String,
 		trim: true
+	},
+	changelogEsp: {
+		type: String,
+		trim: true
 	}
 });
 

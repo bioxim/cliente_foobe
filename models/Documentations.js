@@ -10,6 +10,14 @@ const documentationsSchema = new Schema({
 	texto: {
 		type: String,
 		trim: true
+	},
+	tituloEsp: {
+		type: String,
+		trim: true
+	},
+	textoEsp: {
+		type: String,
+		trim: true
 	}
 });
 
